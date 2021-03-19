@@ -40,3 +40,18 @@ $(".block8").text(timeSlot8);
 var timeSlot9 = before.add(1, "h");
  timeSlot9 =  timeSlot9.format('hh:mm A');
 $(".block9").text(timeSlot9); 
+
+function timeTest() {
+    time1 = moment().startOf('day').add(9, "hours");
+    currentTime = currentTime.startOf("hour");
+
+    if (currentTime.isAfter(timeSlot1)) {
+        $(".form9").addClass("past");
+    }else if (currentTime.isBefore(timeSlot1)) {
+        $(".form9").addClass("future");
+    }else if (currentTime.isSame(timeSlot1)) {
+        $(".form9").addClass("present");
+    };
+    
+    }
+}
