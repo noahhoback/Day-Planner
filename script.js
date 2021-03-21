@@ -142,5 +142,30 @@ $(".form4").addClass("future");
 else if (currentTime.isSame(timeSlot8)) {
 $(".form4").addClass("present");
 };
-    
+timeSlot9 = moment().startOf('day').add(16, "hours");
+currentTime = currentTime.startOf("hour");
+
+if (currentTime.isAfter(timeSlot9)) {
+    $(".form5").addClass("past");
+    }
+    else if (currentTime.isBefore(timeSlot9)) {
+    $(".form5").addClass("future");
+    }
+    else if (currentTime.isSame(timeSlot9)) {
+    $(".form5").addClass("present");
+  };
 }
+timeTest();
+var x = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+for (var i = 0; i < x.length; i++) {
+    var localHour = localStorage.getItem(x[i]);
+    $(".form" + x[i]).val(localHour);
+} 
+    $(".saveBtn").click(function() {
+        event.preventDefault();
+        var form = $(this).siblings(".form-control").val();
+        var list =$(this).parent().data("hour");
+        localStorage.setItem(list, form);
+    });
+
+    
