@@ -4,6 +4,7 @@ This assignment asked us to create a simple calendar application that allows a u
 The following screenshot shows the functionality of the Day Planner. Each timeblock is color-coded to indicate whether it is in the past (grey) present (red) future (green): 
 
 ![Day-Planner Screenshot](assets/day-planner-screenshot.PNG]
+![image](https://user-images.githubusercontent.com/77941463/111892278-4e03b200-89d0-11eb-93d9-a5316ab0726a.png)
 
 
 # 05 Third-Party APIs: Work Day Scheduler
