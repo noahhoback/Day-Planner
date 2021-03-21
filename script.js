@@ -2,9 +2,15 @@ moment(Date);
 $("#todaysDate").text(moment().format('dddd MMMM Do YYYY, h:mm a'));
 
 var currentTime = moment();
+
+// the following line of code changes the current time to the most recent hour, i.e. 9:30 is read as 9:00
 currentTime = currentTime.startOf("hour");
+
+//the following line of code adds 9 to "start of day" so that the day starts at 9am (start of work day)
 var before = moment().startOf("day").add(9, "hours");
 
+
+//the following code is for the time blocks, one for each hour from 9am-5pm. 
 var timeSlot1 = before.add(0, "h");
 timeSlot1 = timeSlot1.format('hh:mm A');
 $(".block1").text(timeSlot1);
@@ -41,6 +47,9 @@ var timeSlot9 = before.add(1, "h");
  timeSlot9 =  timeSlot9.format('hh:mm A');
 $(".block9").text(timeSlot9); 
 
+//the following function compares the "hour" in the above time slots to the current time. A class of past, present, or future is given to 'var currentTime'.
+// just like above where we added 9 hours to make 9am the start of the day, we are adding hours to the various time slots. 
+//".form" is named based on the actual time. for example, "timeSlot8" is for the 4pm hour, and ".form4" is used.
 function timeTest() {
     timeSlot1 = moment().startOf('day').add(9, "hours");
     currentTime = currentTime.startOf("hour");
@@ -155,12 +164,16 @@ if (currentTime.isAfter(timeSlot9)) {
     $(".form5").addClass("present");
   };
 }
+
 timeTest();
+//the following for loop cycles through the input area to get item from local storage.
 var x = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 for (var i = 0; i < x.length; i++) {
     var localHour = localStorage.getItem(x[i]);
     $(".form" + x[i]).val(localHour);
 } 
+
+// the following code saves input to local storage when the ".saveBtn" is clicked
     $(".saveBtn").click(function() {
         event.preventDefault();
         var form = $(this).siblings(".form-control").val();
